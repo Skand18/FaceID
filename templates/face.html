@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    camera
+{% endblock %}
+
+{% block main %}
+
+{%if message == 1%}
+<H3 style="align-content: center;font-family: 'Ubuntu', sans-serif;position: absolute;border-radius: 0; left: 43%; top:0%;" class="alert-danger">Not clear<br></H3>
+{%endif%}
+
+<div style="padding: 0px;margin: 0px;width:220;height:240;">
+
+<canvas 
+  style="position: absolute; left: 0%;z-index: -1; top:0%;height: 480px;width: 640px;"
+  id="canvas" >
+</canvas>
+
+<button
+ id="stop" 
+ onclick="stop()" 
+ style="display:none">stop
+</button>
+
+<video id="player" style="position: sticky;height: 640;width: 480;z-index: -1;"
+autoplay>
+</video>
+
+<br>
+
+<button
+ id="capture" 
+ style="align-content: center;position: absolute;border-radius: 100px; left: 47%; top:50%;"
+ class="btn btn-primary"
+ onclick="capture()">
+ Capture
+</button>
+
+<form action="/facesetup" method="post"  enctype="multipart/form-data" >
+
+
+<input 
+type="text" 
+id="pic" name="pic" 
+style="display:none">
+
+<button id="scan"
+ style="align-content: center;position: absolute;border-radius: 100px;display: none; left: 52%; top:50%;"
+ class="btn btn-primary">
+  scan
+</button>
+
+</form>
+
+</div>
+
+<script type="text/javascript" src="static/js/face.js" ></script>
+ 
+
+</html>
+{% endblock %}
